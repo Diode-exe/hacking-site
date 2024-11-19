@@ -103,15 +103,15 @@
                 "https://krebsonsecurity.com/feed/",
                 "https://www.cvedetails.com/rss.php"
             ];
-            const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+            const proxyUrl = "https://api.allorigins.win/get?url=";
             const newsList = document.getElementById("news-list");
             newsList.innerHTML = "";
 
             try {
                 for (const feedUrl of rssFeeds) {
-                    const response = await fetch(proxyUrl + feedUrl);
-                    const text = await response.text();
-                    const xml = parser.parseFromString(text, "text/xml");
+                    const response = await fetch(proxyUrl + encodeURIComponent(feedUrl));
+                    const data = await response.json();
+                    const xml = parser.parseFromString(data.contents, "text/xml");
                     const items = xml.querySelectorAll("item");
 
                     items.forEach((item, index) => {
