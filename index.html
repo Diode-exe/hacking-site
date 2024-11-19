@@ -1,95 +1,93 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hacking Tools</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiodesCAER Hacking</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <header>
-    <h1>Hacking Tools</h1>
-  </header>
-
-  <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-
-  <div class="container">
-    <h2>Welcome to the Hacking Tools Collection</h2>
-    <p>Explore a curated selection of tools for ethical hacking, penetration testing, and cybersecurity analysis.</p>
-
-    <div class="services">
-      <!-- Group 1 -->
-      <div>
-        <div class="service">
-          <h3>Tool 1: John the Ripper</h3>
-          <p>A fast password cracker designed to detect weak passwords and improve security.</p>
-          <a href="https://www.openwall.com/john/" target="_blank">Learn More</a>
+<body onload="checkDarkMode()">
+    <header>
+        <h1 class="fly-in">DiodesCAER Hacking</h1>
+        <h2>DISCLAIMER - I won't do your hacking dirty work</h2>
+    </header>
+    <iframe src="navbar.html" title="Navigation Bar"></iframe>
+    <main>
+        <div class="container" id="home">
+            <h2>Welcome to DiodesCAER Hacking!</h2>
+            <p>Click <a href="tools.html">here</a> for a list of tools</p>
         </div>
-        <div class="service">
-          <h3>Tool 4: Metasploit</h3>
-          <p>A penetration testing framework for discovering, exploiting, and validating vulnerabilities.</p>
-          <a href="https://www.metasploit.com/" target="_blank">Learn More</a>
+        <div class="container" id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or need assistance, feel free to reach out to us:</p>
+            <p>Email: <a href="mailto:diodescaer@protonmail.com"><font color="red">diodescaer@protonmail.com</font></a></p>
         </div>
-      </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 DiodesCAER Tech Services</p>
+    </footer>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <script>
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
 
-      <!-- Group 2 -->
-      <div>
-        <div class="service">
-          <h3>Tool 2: Nmap</h3>
-          <p>A powerful network scanning tool for discovering devices and services in a network.</p>
-          <a href="https://nmap.org/" target="_blank">Learn More</a>
-        </div>
-        <div class="service">
-          <h3>Tool 5: Nikto</h3>
-          <p>A web server scanner that tests for dangerous files, outdated server software, and other vulnerabilities.</p>
-          <a href="https://cirt.net/Nikto2" target="_blank">Learn More</a>
-        </div>
-      </div>
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+ 
+        function eraseCookie(name) {
+            document.cookie = name + '=; Max-Age=-99999999;';
+        }
 
-      <!-- Group 3 -->
-      <div>
-        <div class="service">
-          <h3>Tool 3: Wireshark</h3>
-          <p>A network protocol analyzer for inspecting and debugging traffic in real time.</p>
-          <a href="https://www.wireshark.org/" target="_blank">Learn More</a>
-        </div>
-        <div class="service">
-          <h3>Tool 6: Burp Suite</h3>
-          <p>An integrated platform for performing web application security testing.</p>
-          <a href="https://portswigger.net/burp" target="_blank">Learn More</a>
-        </div>
-      </div>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            document.querySelectorAll('.container').forEach(container => {
+                container.classList.toggle('dark-mode');
+            });
+            document.querySelectorAll('header, footer').forEach(element => {
+                element.classList.toggle('dark-mode');
+            });
+            document.querySelectorAll('.service').forEach(service => {
+                service.classList.toggle('dark-mode');
+            });
 
-      <!-- Group 4 -->
-      <div>
-        <div class="service">
-          <h3>Tool 7: Aircrack-ng</h3>
-          <p>A complete suite of tools to assess Wi-Fi network security and recover keys.</p>
-          <a href="https://www.aircrack-ng.org/" target="_blank">Learn More</a>
-        </div>
-        <div class="service">
-          <h3>Tool 8: Hydra</h3>
-          <p>A fast and flexible network logon cracker for testing password vulnerabilities.</p>
-          <a href="https://github.com/vanhauser-thc/thc-hydra" target="_blank">Learn More</a>
-        </div>
-      </div>
-    </div>
-  </div>
+            let darkMode = document.body.classList.contains('dark-mode');
+            setCookie('darkMode', darkMode, 7);
+            document.querySelector('iframe').contentWindow.postMessage('toggle-dark-mode', '*');
+        }
 
-  <footer>
-    <p>© 2024 DiodesCAER Tech Services | For ethical use only.</p>
-  </footer>
-
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-      document.querySelector('header').classList.toggle('dark-mode');
-      document.querySelector('footer').classList.toggle('dark-mode');
-      document.querySelector('.container').classList.toggle('dark-mode');
-      document.querySelectorAll('.service').forEach(service => {
-        service.classList.toggle('dark-mode');
-      });
-    }
-  </script>
+        function checkDarkMode() {
+            let darkMode = getCookie('darkMode');
+            if (darkMode === 'true') {
+                document.body.classList.add('dark-mode');
+                document.querySelectorAll('.container').forEach(container => {
+                    container.classList.add('dark-mode');
+                });
+                document.querySelectorAll('header, footer').forEach(element => {
+                    element.classList.add('dark-mode');
+                });
+                document.querySelectorAll('.service').forEach(service => {
+                    service.classList.add('dark-mode');
+                });
+                document.querySelector('iframe').contentWindow.postMessage('toggle-dark-mode', '*');
+            }
+        }
+    </script>
 </body>
 </html>
