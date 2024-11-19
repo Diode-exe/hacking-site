@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body.dark-mode nav {
+            background-color: #444;
+        }
+        nav {
+            background-color: #666;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        window.addEventListener('message', (event) => {
+            if (event.data === 'toggle-dark-mode') {
+                document.body.classList.toggle('dark-mode');
+            }
+        });
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="/" target="_top">Home</a>
+        <a href="contact.html" target="_top">Contact</a>
+        <a href="games.html" target="_top">Games</a>
+		<a href="blog.html" target="_top">Blog</a>
+    </nav>
+</body>
+</html>
