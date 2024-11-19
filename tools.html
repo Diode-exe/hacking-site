@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacking Tools</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Hacking Tools</h1>
+  </header>
+
+  <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+  <div class="container">
+    <h2>Welcome to the Hacking Tools Collection</h2>
+    <p>Explore a curated selection of tools for ethical hacking, penetration testing, and cybersecurity analysis.</p>
+
+    <div class="services">
+      <div class="service">
+        <h3>Tool 1: John the Ripper</h3>
+        <p>A fast password cracker designed to detect weak passwords and improve security.</p>
+        <a href="https://www.openwall.com/john/" target="_blank">Learn More</a>
+      </div>
+
+      <div class="service">
+        <h3>Tool 2: Nmap</h3>
+        <p>A powerful network scanning tool for discovering devices and services in a network.</p>
+        <a href="https://nmap.org/" target="_blank">Learn More</a>
+      </div>
+
+      <div class="service">
+        <h3>Tool 3: Wireshark</h3>
+        <p>A network protocol analyzer for inspecting and debugging traffic in real time.</p>
+        <a href="https://www.wireshark.org/" target="_blank">Learn More</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 Hacking Tools Collection | For ethical use only.</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      document.querySelector('header').classList.toggle('dark-mode');
+      document.querySelector('footer').classList.toggle('dark-mode');
+      document.querySelector('.container').classList.toggle('dark-mode');
+      document.querySelectorAll('.service').forEach(service => {
+        service.classList.toggle('dark-mode');
+      });
+    }
+  </script>
+</body>
+</html>
