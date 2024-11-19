@@ -130,7 +130,7 @@ footer p {
 /* Dark Mode Styles */
 body.dark-mode {
   background-color: #121212;
-  color: white;
+  color: #f5f5f5; /* Lighter text for readability */
 }
 
 header.dark-mode {
@@ -166,6 +166,24 @@ footer.dark-mode {
   color: white;
 }
 
+/* Ensure proper contrast in dark mode */
+.service.dark-mode a {
+  color: #bbdefb;
+}
+
+.service.dark-mode a:hover {
+  color: #ffffff;
+}
+
+table.dark-mode th, table.dark-mode td {
+  border-color: #444;
+  color: #fff;
+}
+
+table.dark-mode tr:nth-child(even) {
+  background-color: #555;
+}
+
 /* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
   .services {
@@ -175,5 +193,10 @@ footer.dark-mode {
 
   .service {
     flex: 1 1 100%;
+  }
+
+  /* Tables should also adjust on smaller screens */
+  table {
+    font-size: 14px;
   }
 }
