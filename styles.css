@@ -146,3 +146,53 @@ body.dark-mode table td, body.dark-mode table th {
   border-color: #555;
   color: #fff;
 }
+/* News Container Styling */
+#news-container {
+  margin: 20px auto;
+  padding: 15px;
+  max-width: 800px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#news-container h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#news-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#news-list li {
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+#news-list li a {
+  text-decoration: none;
+  color: #0073e6;
+  font-weight: bold;
+}
+
+#news-list li a:hover {
+  text-decoration: underline;
+}
+
+/* Dark Mode Support */
+body.dark-mode #news-container {
+  background: #333;
+  border-color: #555;
+}
+
+body.dark-mode #news-list li a {
+  color: #66b2ff;
+}
+
+body.dark-mode #news-list li a:hover {
+  color: #99ccff;
+}
