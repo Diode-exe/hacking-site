@@ -103,30 +103,6 @@ table tr:hover {
   background-color: #e0e0e0;
 }
 
-table.dark-mode {
-  background-color: #333;
-}
-
-table.dark-mode th, table.dark-mode td {
-  border-color: #444;
-  color: #fff;
-}
-
-/* Footer */
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-footer p {
-  margin: 0;
-}
-
 /* Dark Mode Styles */
 body.dark-mode {
   background-color: #121212;
@@ -166,22 +142,46 @@ footer.dark-mode {
   color: white;
 }
 
-/* Ensure proper contrast in dark mode */
-.service.dark-mode a {
-  color: #bbdefb;
-}
-
-.service.dark-mode a:hover {
-  color: #ffffff;
+/* Table Dark Mode Adjustments */
+table.dark-mode {
+  background-color: #333;
 }
 
 table.dark-mode th, table.dark-mode td {
   border-color: #444;
-  color: #fff;
+  color: #fff; /* Ensure table text is white in dark mode */
 }
 
 table.dark-mode tr:nth-child(even) {
-  background-color: #555;
+  background-color: #555; /* Darker background for even rows */
+}
+
+table.dark-mode tr:nth-child(odd) {
+  background-color: #444; /* Slightly lighter background for odd rows */
+}
+
+table.dark-mode tr:hover {
+  background-color: #666; /* Hover effect for better visibility */
+}
+
+/* Ensure proper contrast in dark mode */
+table.dark-mode td, table.dark-mode th {
+  color: #fff; /* White text on dark background */
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
 }
 
 /* Responsive Design for Smaller Screens */
