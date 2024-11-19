@@ -1,63 +1,38 @@
-/* General Page Styling */
+/* General Reset */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
   margin: 0;
   padding: 0;
+  background-color: #f4f4f9;
   color: #333;
 }
 
-header {
-  background-color: #333;
-  color: white;
+header, footer {
+  padding: 10px;
   text-align: center;
-  padding: 10px 0;
-}
-
-h1 {
-  margin: 0;
-}
-
-button.dark-mode-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 10px 20px;
   background-color: #333;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
+  color: #fff;
 }
 
-button.dark-mode-toggle:hover {
-  background-color: #444;
-}
-
+/* Container and Layout */
 .container {
-  width: 90%;
-  margin: 20px auto;
-}
-
-h2 {
-  text-align: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
 }
 
 .services {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust for responsiveness */
   gap: 20px;
-  justify-content: space-between;
 }
 
 .service {
-  flex: 1 1 45%;
-  background-color: white;
+  background-color: #f9f9f9;
+  padding: 15px;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .service h3 {
@@ -65,17 +40,58 @@ h2 {
 }
 
 .service a {
-  display: inline-block;
-  margin-top: 10px;
-  color: #333;
   text-decoration: none;
+  color: #0073e6;
 }
 
 .service a:hover {
   text-decoration: underline;
 }
 
-/* Table Styling */
+/* Button */
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode-toggle:hover {
+  background-color: #005bb5;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode header, body.dark-mode footer {
+  background-color: #222;
+  color: #e0e0e0;
+}
+
+body.dark-mode .container {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .service {
+  background-color: #222;
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+body.dark-mode .service a {
+  color: #4dabf7;
+}
+
+/* Updated Table Styling */
 table {
   width: 100%;
   margin: 20px 0;
@@ -103,100 +119,30 @@ table tr:hover {
   background-color: #e0e0e0;
 }
 
-/* Dark Mode Styles */
-body.dark-mode {
-  background-color: #121212;
-  color: #f5f5f5; /* Lighter text for readability */
-}
-
-header.dark-mode {
-  background-color: #1f1f1f;
-}
-
-footer.dark-mode {
-  background-color: #1f1f1f;
-}
-
-.container.dark-mode {
+/* Dark Mode Table Adjustments */
+body.dark-mode table {
   background-color: #333;
+  color: #fff;
 }
 
-.service.dark-mode {
+body.dark-mode table th {
   background-color: #444;
-  border: 1px solid #555;
+  color: #fff;
 }
 
-.service.dark-mode h3 {
-  color: #f5f5f5;
+body.dark-mode table tr:nth-child(even) {
+  background-color: #444;
 }
 
-.service.dark-mode p {
-  color: #ddd;
+body.dark-mode table tr:nth-child(odd) {
+  background-color: #555;
 }
 
-.service.dark-mode a {
-  color: #bbb;
+body.dark-mode table tr:hover {
+  background-color: #666;
 }
 
-.service.dark-mode a:hover {
-  color: white;
-}
-
-/* Table Dark Mode Adjustments */
-table.dark-mode {
-  background-color: #333;
-}
-
-table.dark-mode th, table.dark-mode td {
-  border-color: #444;
-  color: #fff; /* Ensure table text is white in dark mode */
-}
-
-table.dark-mode tr:nth-child(even) {
-  background-color: #555; /* Darker background for even rows */
-}
-
-table.dark-mode tr:nth-child(odd) {
-  background-color: #444; /* Slightly lighter background for odd rows */
-}
-
-table.dark-mode tr:hover {
-  background-color: #666; /* Hover effect for better visibility */
-}
-
-/* Ensure proper contrast in dark mode */
-table.dark-mode td, table.dark-mode th {
-  color: #fff; /* White text on dark background */
-}
-
-/* Footer */
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-footer p {
-  margin: 0;
-}
-
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-  .services {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .service {
-    flex: 1 1 100%;
-  }
-
-  /* Tables should also adjust on smaller screens */
-  table {
-    font-size: 14px;
-  }
+body.dark-mode table td, body.dark-mode table th {
+  border-color: #555;
+  color: #fff;
 }
