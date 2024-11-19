@@ -196,3 +196,9 @@ body.dark-mode #news-list li a {
 body.dark-mode #news-list li a:hover {
   color: #99ccff;
 }
+iframe {
+    width: 100%;
+    height: 60px; /* Adjust based on the navbar height */
+    border: none; /* Removes iframe border */
+}
+
