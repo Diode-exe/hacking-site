@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiodesCAER Hacking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="checkDarkMode()">
+    <header>
+        <h1 class="fly-in">DiodesCAER Hacking- How to not get hacked</h1>
+        <h2>DISCLAIMER - I won't do your hacking dirty work</h2>
+    </header>
+    <iframe src="navbar.html" title="Navigation Bar"></iframe>
+    <main>
+        <div class="container" id="welcome">
+            <h2>How to not get hacked</h2>
+            <p>There are multiple ways to protect yourself</p>
+            <p>1. Change your passwords often. <br> 2. When logging in, make sure no one is watching.</p>
+            <p>3. Don't download files from untrusted sources, especially programs/apps. </p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 DiodesCAER Tech Services</p>
+    </footer>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <script>
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
 
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+
+        function eraseCookie(name) {
+            document.cookie = name + '=; Max-Age=-99999999;';
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            document.querySelectorAll('.container').forEach(container => {
+                container.classList.toggle('dark-mode');
+            });
+            document.querySelectorAll('header, footer').forEach(element => {
+                element.classList.toggle('dark-mode');
+            });
+            document.querySelectorAll('.service').forEach(service => {
+                service.classList.toggle('dark-mode');
+            });
+
+            let darkMode = document.body.classList.contains('dark-mode');
+            setCookie('darkMode', darkMode, 7);
+            document.querySelector('iframe').contentWindow.postMessage('toggle-dark-mode', '*');
+        }
+
+        function checkDarkMode() {
+            let darkMode = getCookie('darkMode');
+            if (darkMode === 'true') {
+                document.body.classList.add('dark-mode');
+                document.querySelectorAll('.container').forEach(container => {
+                    container.classList.add('dark-mode');
+                });
+                document.querySelectorAll('header, footer').forEach(element => {
+                    element.classList.add('dark-mode');
+                });
+                document.querySelectorAll('.service').forEach(service => {
+                    service.classList.add('dark-mode');
+                });
+                document.querySelector('iframe').contentWindow.postMessage('toggle-dark-mode', '*');
+            }
+        }
+
+        async function fetchRSSFeeds() {
+            const parser = new DOMParser();
+            const rssFeeds = [
+                "https://feeds.feedburner.com/TheHackersNews",
+                "https://krebsonsecurity.com/feed/",
+                "https://www.cvedetails.com/rss.php"
+            ];
+            const proxyUrl = "https://api.allorigins.win/get?url=";
+            const newsList = document.getElementById("news-list");
+            newsList.innerHTML = "";
+
+            try {
+                for (const feedUrl of rssFeeds) {
+                    const response = await fetch(proxyUrl + encodeURIComponent(feedUrl));
+                    const data = await response.json();
+                    const xml = parser.parseFromString(data.contents, "text/xml");
+                    const items = xml.querySelectorAll("item");
+
+                    items.forEach((item, index) => {
+                        if (index < 3) {
+                            const title = item.querySelector("title").textContent;
+                            const link = item.querySelector("link").textContent;
+
+                            const listItem = document.createElement("li");
+                            listItem.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
+                            newsList.appendChild(listItem);
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error("Error fetching RSS feeds:", error);
+                newsList.innerHTML = "<li>Failed to load news. Please try again later.</li>";
+            }
+        }
+
+        fetchRSSFeeds();
+    </script>
+</body>
+</html>
