@@ -201,4 +201,17 @@ iframe {
     height: 60px; /* Adjust based on the navbar height */
     border: none; /* Removes iframe border */
 }
+/* Fly-in Heading Animation */
+.fly-in {
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: flyIn 1.5s ease-out forwards;
+}
+
+@keyframes flyIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
