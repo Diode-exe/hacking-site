@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiodesCAER Tech Services</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="checkDarkMode()">
+    <header>
+        <h1 class="fly-in">DiodesCAER Tech Services</h1>
+    </header>
+    <iframe src="navbar.html" title="Navigation Bar"></iframe>
+    <main>
+        <div class="container" id="home">
+            <h2>Welcome to DiodesCAER Tech Services!</h2>
+            <p>We specialize in phone screen and battery replacements, desktop repair, and tech support.</p>
+        </div>
+        <div class="container" id="services">
+            <h2>Our Services</h2>
+            <div class="services">
+                <div class="service">
+                    <h3>Phone Screen and Battery Replacements</h3>
+                    <p>Broken screen? Battery not holding a charge? We can help!</p>
+                </div>
+                <div class="service">
+                    <h3>Desktop Repair</h3>
+                    <p>Desktop running slow or not turning on? We'll get it back up and running.</p>
+                </div>
+                <div class="service">
+                    <h3>Tech Support</h3>
+                    <p>Having trouble with your devices? Let us provide expert tech support.</p>
+                </div>
+              <div class="service">
+                    <h3>Hacking</h3>
+                    <p>Click here for information about hacking.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or need assistance, feel free to reach out to us:</p>
+            <p>Email: <a href="mailto:diodescaer@protonmail.com"><font color="red">diodescaer@protonmail.com</font></a></p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 DiodesCAER Tech Services</p>
+    </footer>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <script>
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+
+        function eraseCookie(name) {
+            document.cookie = name + '=; Max-Age=-99999999;';
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            document.querySelectorAll('.container').forEach(container => {
+                container.classList.toggle('dark-mode');
+            });
+            document.querySelectorAll('header, footer').forEach(element => {
+                element.classList.toggle('dark-mode');
+            });
+            document.querySelectorAll('.service').forEach(service => {
+                service.classList.toggle('dark-mode');
+            });
+
+            let darkMode = document.body.classList.contains('dark-mode');
+            setCookie('darkMode', darkMode, 7);
+            document.querySelector('iframe').contentWindow.postMessage('toggle-dark-mode', '*');
+        }
+
+        function checkDarkMode() {
+            let darkMode = getCookie('darkMode');
+            if (darkMode === 'true') {
+                document.body.classList.add('dark-mode');
+                document.querySelectorAll('.container').forEach(container => {
+                    container.classList.add('dark-mode');
+                });
+                document.querySelectorAll('header, footer').forEach(element => {
+                    element.classList.add('dark-mode');
+                });
+                document.querySelectorAll('.service').forEach(service => {
+                    service.classList.add('dark-mode');
+                });
+                document.querySelector('iframe').contentWindow.postMessage('toggle-dark-mode', '*');
+            }
+        }
+    </script>
+</body>
+</html>
